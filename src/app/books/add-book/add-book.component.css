@@ -1,0 +1,17 @@
+.book-form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .book-form-container > * {
+    width: 100%;
+  }
+  
+  .book-form-container form {
+    margin-bottom: 10px;
+  }
+  
+  .book-form-container form > * {
+    margin: 0.5px 0;
+  }
+  

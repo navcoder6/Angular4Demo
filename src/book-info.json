@@ -1,0 +1,23 @@
+[
+    {
+        "Title":"stringA",
+        "Author":"string",
+        "ISBN":"string",
+        "Publication": "Date",
+        "Publisher":"string",
+        "Price":90,
+        "Genre" :["asd"],
+        "Format": ["asdasd"]
+    },
+
+    {
+        "Title":"stringB",
+        "Author":"string",
+        "ISBN":"string",
+        "Publication": "Date",
+        "Publisher":"string",
+        "Price":90,
+        "Genre" :["asd"],
+        "Format": ["asdasd"]
+    }
+]

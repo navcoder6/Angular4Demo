@@ -1,0 +1,45 @@
+<div class="book-form-container">
+  <form class="book-form-container" #appBookForm="ngForm" [formGroup]="bookForm" (submit)="AddUpdateBook()">
+
+    <mat-form-field>
+      <input matInput placeholder="Title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Author" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="ISBN" >
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Publication Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Price"  type="number" min="0">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select  matInput>
+        <mat-option value="genre" *ngFor="let genre of genreList">{{genre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select  matInput>
+        <mat-option value="format" *ngFor="let format of formatList">{{format}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <span>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!appBookForm.form.valid">
+        {{formMode}}
+      </button>
+    </span>
+    
+  </form>
+</div>

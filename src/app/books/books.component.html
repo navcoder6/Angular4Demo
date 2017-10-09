@@ -1,0 +1,77 @@
+<div class="menu-div">
+    <button mat-button [matMenuTriggerFor]="menu">Column Options</button>
+      <mat-menu #menu="matMenu">
+          <div class="example-header">
+              <mat-selection-list #columnsToShow>
+                <mat-list-option (click)="columnSelected()" *ngFor="let columnHeader of columnOptions" [value]="columnHeader">
+                    {{columnHeader}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+      </mat-menu>
+</div>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field floatPlaceholder="never">
+      <input matInput #filter placeholder="Filter authors">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Author}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isbn">
+      <mat-header-cell *matHeaderCellDef> ISBN </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.ISBN}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publication">
+      <mat-header-cell *matHeaderCellDef> Publication </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.Publication | date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.Price}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+      <mat-header-cell *matHeaderCellDef> Genre </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.Genre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="format">
+      <mat-header-cell *matHeaderCellDef> Format </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.Format}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let row" > 
+          <button mat-fab color="primary" (click)="deleteBook(row)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="update">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell  *matCellDef="let row">
+          <button mat-fab color="accent" (click)="updateBook(row)">Update</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="filteredColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: filteredColumns;"></mat-row>
+  </mat-table>
+</div>
